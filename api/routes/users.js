@@ -1,9 +1,13 @@
 import express from 'express'
+import * as controller from '../controllers/user.js'
 
 const router = express.Router()
 
-router.get('/me', (req, res) => {
-    res.status(200).json({ name: 'Alred Smith', email: 'alf@admin.com'})
-})
+router.get('/me', controller.me)
+router.put('/:id', controller.updateUser)
+router.delete('/:id', controller.deleteUser)
+router.get('/:id', controller.getUser)
+router.put('/:id/follow', controller.follow)
+router.put('/:id/unfollow', controller.unfollow)
 
 export default router
