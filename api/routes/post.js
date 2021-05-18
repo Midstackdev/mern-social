@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', controller.index)
 router.post('/', controller.create)
-router.get('/timeline', controller.postFromFollowing)
+router.get('/timeline/:id', controller.postFromFollowing)
 router.put('/:id', controller.update)
 router.delete('/:id', controller.remove)
 router.put('/:id/like', controller.like)
