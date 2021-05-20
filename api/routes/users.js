@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/me', controller.me)
 router.put('/:id', controller.updateUser)
 router.delete('/:id', controller.deleteUser)
-router.get('/:id', controller.getUser)
+router.get('/', controller.getUser)
 router.put('/:id/follow', controller.follow)
 router.put('/:id/unfollow', controller.unfollow)
 
