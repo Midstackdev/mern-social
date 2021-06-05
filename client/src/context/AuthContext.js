@@ -5,9 +5,7 @@ const INITIAL_STATE = {
     user: {
         "profilePicture": "",
         "coverPicture": "",
-        "followers": [
-          "60944bf56cf05131caea1b56"
-        ],
+        "followers": [],
         "followings": [],
         "isAdmin": false,
         "_id": "60944bb06cf05131caea1b55",

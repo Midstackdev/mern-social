@@ -58,6 +58,27 @@ export const getUser = async (req, res) => {
     
 }
 
+export const getFriends = async (req, res) => {
+    
+    try {
+        const user = await User.findOne({ _id: req.params.id })
+        const friends = await Promise.all(
+            user.followings.map((friendId) => {
+                return User.findById(friendId)
+            })
+        )
+        let firndList = []
+        friends.map((friend) => {
+            const { _id, username, profilePicture } = friend
+            firndList.push({ _id, username, profilePicture })
+        })
+        return res.status(200).json(firndList)
+    } catch (error) {
+        return res.status(500).json(error)  
+    }
+    
+}
+
 export const follow = async (req, res) => {
     if(req.body.userId !== req.params.id) {
 
