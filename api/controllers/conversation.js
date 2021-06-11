@@ -19,8 +19,19 @@ export const create = async (req, res) => {
 
 export const index = async (req, res) => {
     try {
-        const conversation = await Conversation.find({
+        const conversations = await Conversation.find({
             members: { $in: [req.params.id] }
+        })
+        return res.status(200).json(conversations)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+export const show = async (req, res) => {
+    try {
+        const conversation = await Conversation.findOne({
+            members: { $all: [req.params.fuid, req.params.suid] }
         })
         return res.status(200).json(conversation)
     } catch (error) {
